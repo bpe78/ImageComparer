@@ -1,0 +1,16 @@
+﻿Implement loop for reference image.
+Implement loop for comparison images.
+Implement GoBack, GoForward, Mark(x).
+Display a dialog to select the root path
+- key: CTRL + O
+- for reference images
+- for possible duplicates
+Save comparison status for every pair of images (match, not match). Do not duplicate entries.
+Create another view-viewModel:
+- display images that match
+- offer ability to delete, move to Recycle Bin
+- one image can have multiple matches (copies)
+- display image path, name, properties
+
+When pressing 1,2,... display a dialog to select options ?
+What happens when 2 images (none of which is reference) are the same ?
