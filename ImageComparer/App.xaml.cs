@@ -1,17 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
+using Prism.Unity;
+using Prism.Ioc;
 
 namespace ImageComparer
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App : Application
+    public partial class App : PrismApplication
     {
+        protected override Window CreateShell()
+        {
+            return Container.Resolve<MainWindow>();
+        }
+
+        protected override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+
+        }
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
+            var dialog = new SettingsWindow();
+            bool? dialogResult = dialog.ShowDialog();
+            base.OnStartup(e);
+            /* Handle results */
+            /*if (true || dialogResult.HasValue && dialogResult.Value)
+            {
+                base.OnStartup(e);
+            }
+            else
+            {
+                this.Shutdown();
+            }*/
+        }
     }
 }

@@ -5,6 +5,7 @@ Display a dialog to select the root path
 - key: CTRL + O
 - for reference images
 - for possible duplicates
+- http://www.plainionist.net/Mvvm-Dialogs/
 Save comparison status for every pair of images (match, not match). Do not duplicate entries.
 Create another view-viewModel:
 - display images that match
@@ -14,3 +15,5 @@ Create another view-viewModel:
 
 When pressing 1,2,... display a dialog to select options ?
 What happens when 2 images (none of which is reference) are the same ?
+
+Use Unity instead of Autofac for DI.

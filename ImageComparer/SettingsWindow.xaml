@@ -1,0 +1,44 @@
+﻿<Window x:Class="ImageComparer.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ImageComparer"
+        mc:Ignorable="d"
+        Name="_settingsWindow"
+        Title="SettingsWindow" Height="250" Width="500" WindowStartupLocation="CenterScreen" WindowStyle="None" >
+    <Behaviors:Interaction.Triggers>
+        <Behaviors:EventTrigger EventName="CloseWindow" SourceObject="{Binding }" >
+            <Behaviors:CallMethodAction MethodName="Close" TargetObject="{Binding ElementName=_settingsWindow}"/>
+        </Behaviors:EventTrigger>
+    </Behaviors:Interaction.Triggers>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="150" />
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto" MinWidth="30" />
+        </Grid.ColumnDefinitions>
+        <!-- Reference folder -->
+        <TextBlock Text="Reference folder :" Grid.Row="0" Grid.Column="0" Padding="10,5" VerticalAlignment="Center" />
+        <TextBox Text="{Binding ReferenceImagesPath}" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"/>
+        <Button Content="..." Command="{Binding BrowseRefCmd}" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center"/>
+        
+        <!-- Checkbox -->
+        <CheckBox Content="Use the same path" IsChecked="{Binding UseSamePath}" Grid.Row="1" Grid.Column="1" Margin="0, 5"/>
+
+        <!-- Comparison folder -->
+        <TextBlock Text="Duplicates folder :" Grid.Row="2" Grid.Column="0" Padding="10,5" VerticalAlignment="Center" />
+        <TextBox Text="{Binding DuplicateImagesPath}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" IsReadOnly="{Binding UseSamePath}"/>
+        <Button Content="..." Command="{Binding BrowseDupCmd}" IsEnabled="{Binding IsEnabledDuplicatePath}" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center"/>
+
+        <Button Content="Save" Command="{Binding SaveCmd}" Grid.Row="4" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" Padding="20, 5" />
+    </Grid>
+</Window>
